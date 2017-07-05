@@ -430,10 +430,11 @@ float fps(const char *filename)
 	}
         if(videoStream==-1)
 	    return -1; // Didn't find a video stream
-	
-	int num = (pFormatCtx->streams[videoStream]->r_frame_rate).num;
-	int den = (pFormatCtx->streams[videoStream]->r_frame_rate).den;
-	result = num/den;
+
+	// hide error: 'AVStream' has no member named 'r_frame_rate'
+	//int num = (pFormatCtx->streams[videoStream]->r_frame_rate).num;
+	//int den = (pFormatCtx->streams[videoStream]->r_frame_rate).den;
+	//result = num/den;
 
 	avformat_close_input(&pFormatCtx);
 	
